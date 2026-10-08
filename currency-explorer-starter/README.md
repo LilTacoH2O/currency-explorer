@@ -1,19 +1,20 @@
 # Currency Explorer · Starter Project
 
 ## Integrantes
-- Estudiante A:
-- Estudiante B:
+- Estudiante A: Martinez Flores Javier Alexander
+- Estudiante B: Hernandez Lopez Clara Paulina
 
 ## Pair Programming
 | Misión | Driver | Navigator | Commit / evidencia |
 |---|---|---|---|
-| 04 | | | |
-| 05 | | | |
-| 06 | | | |
-| 07 | | | |
-| 08 | | | |
-| 09 | | | |
-| 10 | | | |
+| 04 |Javier |Clara | |
+| 05 |Clara |Javier | |
+| 06 | Javier|Clara | |
+| 07 |Clara |Javier | |
+| 08 | Javier|Clara | |
+| 09 | Clara|Javier | |
+| 10 | Javier|Clara | |
+| 11 | Clara|Javier | |
 
 ## Objetivo
 Completar una aplicación frontend que consuma Frankfurter API para convertir divisas y demostrar comprensión de eventos, DOM, `fetch()`, JSON, asincronía, validación y manejo de errores.
