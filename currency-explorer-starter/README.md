@@ -40,10 +40,10 @@ Endpoint de referencia:
 
 
 ## Decisiones técnicas
-Registra aquí al menos dos decisiones tomadas por la pareja y explica por qué.
-
-1. 
-2. 
+1. Usamos finally para rehabilitar los botones. Así, aunque falle la red o la API responda con error, establecerCarga(false) siempre se ejecuta y la aplicación no se queda bloqueada en "Consultando...".
+2. Validamos la cantidad y las monedas antes de llamar a la API. Un campo vacío, cero, negativo o dos monedas iguales no generan petición, así evitamos consultas inútiles y resultados absurdos. El campo vacío se revisa antes de Number() porque Number("") devuelve 0.
+3. Usamos una variable temporal en el intercambio ⇄. Sin ella, al hacer origen.value = destino.value se pierde el valor original y ambos selectores quedan iguales.
+4. Separamos responsabilidades en funciones. convertirMoneda() coordina; mostrarError(), establecerCarga() y formatearImporte() solo se encargan de la interfaz y el formato, lo que facilita probar y modificar el código.
 
 ## Revisión cruzada
 - Aspecto bien resuelto:
