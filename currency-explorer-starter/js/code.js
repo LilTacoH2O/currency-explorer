@@ -44,7 +44,7 @@ async function convertirMoneda() {
 
   const url = `https://api.frankfurter.dev/v2/rate/${monedaOrigen}/${monedaDestino}`;
 
- try {
+  try {
     // MISIÓN 08: va DESPUÉS de las validaciones, para que un error
     // de validación no deje la app bloqueada
     establecerCarga(true);
@@ -63,7 +63,7 @@ async function convertirMoneda() {
     }
     // MISIÓN 05 (zona 3): el cálculo lo hace la app; rate y date vienen de la API
     const conversion = valor * datos.rate;
- 
+
     resultado.classList.remove("error");
     resultadoTexto.textContent =
       `${formatearImporte(valor)} ${monedaOrigen} = ${formatearImporte(conversion)} ${monedaDestino}`;
