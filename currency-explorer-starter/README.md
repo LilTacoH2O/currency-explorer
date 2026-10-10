@@ -28,6 +28,16 @@ Completar una aplicación frontend que consuma Frankfurter API para convertir di
 ## API
 Endpoint de referencia:
 `https://api.frankfurter.dev/v2/rate/{origen}/{destino}`
+## Funcionalidades
+- Selección dinámica de moneda origen y destino.
+- Conversión con tipo de cambio real y resultado con 2 decimales y separador de miles.
+- Botón ⇄ para intercambiar monedas con recálculo automático.
+- Validación de cantidad (vacía, cero, negativa, no numérica) y de monedas iguales.
+- Estado de carga: "Consultando..." con botones deshabilitados.
+- Manejo de errores de red y de respuesta HTTP, con mensajes distintos.
+- Diseño responsive (escritorio y móvil).
+ 
+
 
 ## Decisiones técnicas
 Registra aquí al menos dos decisiones tomadas por la pareja y explica por qué.
