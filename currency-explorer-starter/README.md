@@ -11,7 +11,7 @@
 | 05 |Clara |Javier | Misión 05: conversión completa con formato de importes — Driver: Clara / Navigator: Javier |
 | 06 | Javier|Clara | Misión 06: intercambio de monedas y recálculo — Driver: Javier / Navigator: Clara |
 | 07 |Clara |Javier | Misión 07: validación completa de cantidad y monedas — Driver: Clara / Navigator: Javier |
-| 08 | Javier|Clara | |
+| 08 | Javier|Clara | Misión 08: estado de carga y botones deshabilitados — Driver: Javier / Navigator: Clara |
 | 09 | Clara|Javier | |
 | 10 | Javier|Clara | |
 | 11 | Clara|Javier | |
