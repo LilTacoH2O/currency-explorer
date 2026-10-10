@@ -13,7 +13,7 @@
 | 07 |Clara |Javier | Misión 07: validación completa de cantidad y monedas — Driver: Clara / Navigator: Javier |
 | 08 | Javier|Clara | Misión 08: estado de carga y botones deshabilitados — Driver: Javier / Navigator: Clara |
 | 09 | Clara|Javier |Misión 09: manejo de errores con response.ok y try/catch — Driver: Clara / Navigator: Javier |
-| 10 | Javier|Clara | |
+| 10 | Javier|Clara | Misión 10: estados visuales y diseño responsive — Driver: Javier / Navigator: Clara |
 | 11 | Clara|Javier | |
 
 ## Objetivo
