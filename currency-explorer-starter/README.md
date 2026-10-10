@@ -46,7 +46,7 @@ Endpoint de referencia:
 4. Separamos responsabilidades en funciones. convertirMoneda() coordina; mostrarError(), establecerCarga() y formatearImporte() solo se encargan de la interfaz y el formato, lo que facilita probar y modificar el código.
 ## Evidencias de la práctica
 
-[Ver evidencias completas (PDF)](docs/Practica_evidencias.pdf)
+[Ver evidencias completas (PDF)](Practica_evidencias.pdf)
 
 ## Revisión cruzada
 - Aspecto bien resuelto: el botón ⇄ invierte las monedas y recalcula el resultado con un solo clic, y la app se recupera correctamente tras un error de red (los botones se rehabilitan gracias a finally).
