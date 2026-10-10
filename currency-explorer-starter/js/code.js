@@ -44,13 +44,23 @@ async function convertirMoneda() {
 
   const url = `https://api.frankfurter.dev/v2/rate/${monedaOrigen}/${monedaDestino}`;
 
-  try {
-    // TODO · MISIÓN 08: activar un estado visual de carga antes de consultar.
+ try {
+    // MISIÓN 08: va DESPUÉS de las validaciones, para que un error
+    // de validación no deje la app bloqueada
+    establecerCarga(true);
     const respuesta = await fetch(url);
-
-    // TODO · MISIÓN 09: comprobar response.ok y lanzar un error si corresponde.
-    const datos = await respuesta.json();
-
+ 
+    // MISIÓN 09: fetch NO lanza error con 404/500, hay que revisar response.ok
+    if (!respuesta.ok) {
+      throw new Error(`HTTP ${respuesta.status}`);
+    }
+ 
+    const datos = await respuesta.json(); // convierte el cuerpo en objeto JS
+ 
+    // Comprobamos que la API devolvió una tasa numérica
+    if (typeof datos.rate !== "number") {
+      throw new Error("La respuesta no contiene una tasa válida");
+    }
     // MISIÓN 05 (zona 3): el cálculo lo hace la app; rate y date vienen de la API
     const conversion = valor * datos.rate;
  
@@ -61,9 +71,16 @@ async function convertirMoneda() {
       `1 ${monedaOrigen} = ${datos.rate} ${monedaDestino} · ${datos.date}`;
 
   } catch (error) {
-    // TODO · MISIÓN 09: mejora el mensaje y analiza qué errores pueden llegar aquí.
-    mostrarError("No fue posible completar la consulta.");
     console.error(error);
+    // fetch lanza TypeError cuando no hay conexión de red
+    if (error instanceof TypeError) {
+      mostrarError("No hay conexión con el servicio.", "Revisa tu internet e inténtalo de nuevo.");
+    } else {
+      // errores HTTP o respuesta inválida
+      mostrarError("El servicio no pudo responder esta consulta.", "Intenta de nuevo en unos minutos.");
+    }
+  } finally {
+    establecerCarga(false);
   }
 }
 
@@ -77,10 +94,11 @@ function intercambiarMonedas() {
 
 
 // 4. UTILIDADES DE INTERFAZ
-function mostrarError(mensaje) {
+// MISIÓN 09 (zona 4): el detalle ahora es opcional, con un valor por defecto
+function mostrarError(mensaje, detalle = "Revisa los datos e inténtalo nuevamente.") {
   resultado.classList.add("error");
   resultadoTexto.textContent = mensaje;
-  detalleTasa.textContent = "Revisa los datos e inténtalo nuevamente.";
+  detalleTasa.textContent = detalle;
 }
 // MISIÓN 05 (zona 4): da formato de importe con 2 decimales y separador de miles
 function formatearImporte(numero) {
@@ -89,6 +107,20 @@ function formatearImporte(numero) {
     maximumFractionDigits: 2  // nunca más de 2 decimales
   });
 }
+// MISIÓN 08 (zona 4): activa o desactiva el estado de carga
+function establecerCarga(cargando) {
+  btnConvertir.disabled = cargando;     // evita clics repetidos
+  btnIntercambiar.disabled = cargando;
+  btnConvertir.textContent = cargando ? "Consultando..." : "Convertir";
+ 
+  if (cargando) {
+    resultado.classList.remove("error");
+    resultadoTexto.textContent = "Consultando...";
+    detalleTasa.textContent = "Esperando respuesta de la API.";
+  }
+}
+
+
 
 // PISTA PARA EL RETO:
 // origen.value        -> moneda seleccionada como origen
