@@ -22,18 +22,25 @@ async function convertirMoneda() {
   // Misiones guiadas 1-3: ya existe un flujo mínimo funcional EUR -> USD.
   // A partir de la Misión 4 debes convertirlo en una solución dinámica.
 
-  const valor = Number(cantidad.value);
-
-  // TODO · MISIÓN 07: sustituir esta validación mínima por una validación completa.
-  if (!Number.isFinite(valor) || valor <= 0) {
-    mostrarError("Escribe una cantidad mayor que cero.");
-    return;
-  }
-  // MISIÓN 04: leer las monedas elegidas por el usuario en los <select>
-  // (antes estaban escritas a mano como "EUR" y "USD")
+  // MISIÓN 07: validación completa ANTES de llamar a la API
+  const texto = cantidad.value.trim(); // el input entrega texto
+  const valor = Number(texto);         // lo convertimos a número
+ 
+  // Se revisa primero el vacío porque Number("") devuelve 0
+  if (texto === "") { mostrarError("Escribe una cantidad para convertir."); return; }
+  // isFinite descarta NaN e Infinity
+  if (!Number.isFinite(valor)) { mostrarError("La cantidad no es un número válido."); return; }
+  if (valor <= 0) { mostrarError("La cantidad debe ser mayor que cero."); return; }
+ 
+  // MISIÓN 04: monedas elegidas por el usuario
   const monedaOrigen = origen.value;
   const monedaDestino = destino.value;
-
+ 
+  // Misma moneda en ambos lados no tiene sentido convertir
+  if (monedaOrigen === monedaDestino) {
+    mostrarError("Elige monedas distintas para convertir.");
+    return;
+  }
 
   const url = `https://api.frankfurter.dev/v2/rate/${monedaOrigen}/${monedaDestino}`;
 
@@ -52,7 +59,7 @@ async function convertirMoneda() {
       `${formatearImporte(valor)} ${monedaOrigen} = ${formatearImporte(conversion)} ${monedaDestino}`;
     detalleTasa.textContent =
       `1 ${monedaOrigen} = ${datos.rate} ${monedaDestino} · ${datos.date}`;
-      
+
   } catch (error) {
     // TODO · MISIÓN 09: mejora el mensaje y analiza qué errores pueden llegar aquí.
     mostrarError("No fue posible completar la consulta.");
