@@ -49,10 +49,10 @@ Endpoint de referencia:
 [Ver evidencias completas (PDF)](docs/Practica_evidencias.pdf)
 
 ## Revisión cruzada
-- Aspecto bien resuelto:
-- Error o comportamiento mejorable:
-- Propuesta de mejora:
-- Cambio incorporado después de la revisión:
+- Aspecto bien resuelto: el botón ⇄ invierte las monedas y recalcula el resultado con un solo clic, y la app se recupera correctamente tras un error de red (los botones se rehabilitan gracias a finally).
+- Error o comportamiento mejorable: Number("") devuelve 0, así que un campo vacío se convertía sin avisar; además, con la misma moneda en origen y destino la app consultaba un par absurdo.
+- Propuesta de mejora: validar el campo vacío antes de convertir a número, bloquear monedas iguales, y activar el estado de carga solo después de las validaciones.
+- Cambio incorporado después de la revisión: Misión 07 (validación en pasos: vacío → número válido → mayor que cero → monedas distintas) y establecerCarga(true) colocado después de las validaciones en la Misión 08.
 
 ## Reflexión final (150–200 palabras)
 Explica el principal aprendizaje técnico, una dificultad relevante y una decisión que haya surgido del trabajo Driver/Navigator.
