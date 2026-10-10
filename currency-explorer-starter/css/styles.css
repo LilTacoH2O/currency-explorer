@@ -34,3 +34,11 @@ input:focus,select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(22,1
   .currency-grid { grid-template-columns: 1fr; }
   .swap { justify-self: center; transform: rotate(90deg); }
 }
+
+/* MISIÓN 11: botón secundario y caja de la gráfica */
+.secondary{width:100%;margin-top:12px;border:1px solid var(--teal);border-radius:11px;padding:13px 18px;background:#fff;color:var(--teal);font-weight:700;font-size:1rem;cursor:pointer}
+.secondary:hover{background:var(--soft)}
+.secondary:disabled{opacity:.55;cursor:wait}
+.chart-box{margin-top:22px;padding:18px;border:1px solid var(--line);border-radius:14px;display:grid;gap:8px}
+.chart-box[hidden]{display:none}
+.chart-box canvas{width:100%;height:auto}
