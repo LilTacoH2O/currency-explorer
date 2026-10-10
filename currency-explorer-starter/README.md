@@ -56,3 +56,9 @@ Endpoint de referencia:
 
 ## Reflexión final (150–200 palabras)
 Explica el principal aprendizaje técnico, una dificultad relevante y una decisión que haya surgido del trabajo Driver/Navigator.
+Durante este caso práctico comprendimos el recorrido completo de los datos: el clic dispara convertirMoneda(), que valida la cantidad, construye la URL con los valores de los selectores, usa await para esperar la respuesta de fetch(), convierte el cuerpo con json() y actualiza el DOM con textContent. También entendimos que response.ok y response.json() son pasos distintos: fetch no lanza error con un 404 o un 500, así que hay que revisar el estado antes de leer los datos.
+ 
+La mayor dificultad fue que Number("") devuelve 0, por lo que un campo vacío se convertía sin avisar. La resolvimos revisando el texto vacío antes de convertirlo a número y separando un mensaje para cada caso.
+ 
+Una decisión importante surgió cuando Clara, como Navigator, observó que establecerCarga(true) debía ir después de las validaciones y que los botones podían quedar bloqueados tras un error. Esto nos llevó a usar finally para rehabilitarlos siempre. Si cambiáramos de API conservaríamos eventos, validación, cálculo y manejo de errores, y solo ajustaríamos la URL y los nombres de las propiedades del JSON.
+
