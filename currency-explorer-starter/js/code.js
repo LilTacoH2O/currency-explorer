@@ -45,7 +45,9 @@ async function convertirMoneda() {
   const url = `https://api.frankfurter.dev/v2/rate/${monedaOrigen}/${monedaDestino}`;
 
   try {
-    // TODO · MISIÓN 08: activar un estado visual de carga antes de consultar.
+    // MISIÓN 08: va DESPUÉS de las validaciones, para que un error
+    // de validación no deje la app bloqueada
+    establecerCarga(true);
     const respuesta = await fetch(url);
 
     // TODO · MISIÓN 09: comprobar response.ok y lanzar un error si corresponde.
@@ -53,7 +55,7 @@ async function convertirMoneda() {
 
     // MISIÓN 05 (zona 3): el cálculo lo hace la app; rate y date vienen de la API
     const conversion = valor * datos.rate;
- 
+
     resultado.classList.remove("error");
     resultadoTexto.textContent =
       `${formatearImporte(valor)} ${monedaOrigen} = ${formatearImporte(conversion)} ${monedaDestino}`;
@@ -64,6 +66,9 @@ async function convertirMoneda() {
     // TODO · MISIÓN 09: mejora el mensaje y analiza qué errores pueden llegar aquí.
     mostrarError("No fue posible completar la consulta.");
     console.error(error);
+  } finally {
+    // MISIÓN 08: se ejecuta con éxito o con error, siempre rehabilita los botones
+    establecerCarga(false);
   }
 }
 
@@ -88,6 +93,18 @@ function formatearImporte(numero) {
     minimumFractionDigits: 2, // siempre al menos 2 decimales
     maximumFractionDigits: 2  // nunca más de 2 decimales
   });
+}
+// MISIÓN 08 (zona 4): activa o desactiva el estado de carga
+function establecerCarga(cargando) {
+  btnConvertir.disabled = cargando;     // evita clics repetidos
+  btnIntercambiar.disabled = cargando;
+  btnConvertir.textContent = cargando ? "Consultando..." : "Convertir";
+ 
+  if (cargando) {
+    resultado.classList.remove("error");
+    resultadoTexto.textContent = "Consultando...";
+    detalleTasa.textContent = "Esperando respuesta de la API.";
+  }
 }
 
 // PISTA PARA EL RETO:
