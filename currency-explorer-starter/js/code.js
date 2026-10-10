@@ -60,13 +60,14 @@ async function convertirMoneda() {
   }
 }
 
+// MISIÓN 06: invierte origen y destino y vuelve a calcular
 function intercambiarMonedas() {
-  // TODO · MISIÓN 06:
-  // 1) guardar temporalmente el valor de origen
-  // 2) intercambiar origen.value y destino.value
-  // 3) volver a calcular
-  mostrarError("Misión 06 pendiente: implementa el intercambio de monedas.");
+  const temporal = origen.value;  // 1) guardamos el origen para no perderlo
+  origen.value = destino.value;   // 2) el destino pasa a ser origen...
+  destino.value = temporal;       //    ...y el origen guardado pasa a destino
+  convertirMoneda();              // 3) recalcula con el par invertido
 }
+
 
 // 4. UTILIDADES DE INTERFAZ
 function mostrarError(mensaje) {
