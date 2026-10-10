@@ -44,6 +44,9 @@ Endpoint de referencia:
 2. Validamos la cantidad y las monedas antes de llamar a la API. Un campo vacío, cero, negativo o dos monedas iguales no generan petición, así evitamos consultas inútiles y resultados absurdos. El campo vacío se revisa antes de Number() porque Number("") devuelve 0.
 3. Usamos una variable temporal en el intercambio ⇄. Sin ella, al hacer origen.value = destino.value se pierde el valor original y ambos selectores quedan iguales.
 4. Separamos responsabilidades en funciones. convertirMoneda() coordina; mostrarError(), establecerCarga() y formatearImporte() solo se encargan de la interfaz y el formato, lo que facilita probar y modificar el código.
+## Evidencias de la práctica
+
+[Ver evidencias completas (PDF)](docs/Practica_evidencias.pdf)
 
 ## Revisión cruzada
 - Aspecto bien resuelto:
