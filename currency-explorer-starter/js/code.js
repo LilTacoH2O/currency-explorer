@@ -44,12 +44,15 @@ async function convertirMoneda() {
     // TODO · MISIÓN 09: comprobar response.ok y lanzar un error si corresponde.
     const datos = await respuesta.json();
 
+    // MISIÓN 05 (zona 3): el cálculo lo hace la app; rate y date vienen de la API
     const conversion = valor * datos.rate;
-
+ 
     resultado.classList.remove("error");
-    resultadoTexto.textContent = `${valor.toFixed(2)} ${monedaOrigen} = ${conversion.toFixed(2)} ${monedaDestino}`;
-    detalleTasa.textContent = `1 ${monedaOrigen} = ${datos.rate} ${monedaDestino} · ${datos.date}`;
-
+    resultadoTexto.textContent =
+      `${formatearImporte(valor)} ${monedaOrigen} = ${formatearImporte(conversion)} ${monedaDestino}`;
+    detalleTasa.textContent =
+      `1 ${monedaOrigen} = ${datos.rate} ${monedaDestino} · ${datos.date}`;
+      
   } catch (error) {
     // TODO · MISIÓN 09: mejora el mensaje y analiza qué errores pueden llegar aquí.
     mostrarError("No fue posible completar la consulta.");
@@ -70,6 +73,13 @@ function mostrarError(mensaje) {
   resultado.classList.add("error");
   resultadoTexto.textContent = mensaje;
   detalleTasa.textContent = "Revisa los datos e inténtalo nuevamente.";
+}
+// MISIÓN 05 (zona 4): da formato de importe con 2 decimales y separador de miles
+function formatearImporte(numero) {
+  return numero.toLocaleString("es-MX", {
+    minimumFractionDigits: 2, // siempre al menos 2 decimales
+    maximumFractionDigits: 2  // nunca más de 2 decimales
+  });
 }
 
 // PISTA PARA EL RETO:
