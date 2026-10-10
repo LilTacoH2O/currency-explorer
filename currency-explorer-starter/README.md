@@ -9,7 +9,7 @@
 |---|---|---|---|
 | 04 |Javier |Clara | Misión 04: monedas dinámicas con selectores — Driver: Javier / Navigator: Clara |
 | 05 |Clara |Javier | Misión 05: conversión completa con formato de importes — Driver: Clara / Navigator: Javier |
-| 06 | Javier|Clara | |
+| 06 | Javier|Clara | Misión 06: intercambio de monedas y recálculo — Driver: Javier / Navigator: Clara |
 | 07 |Clara |Javier | |
 | 08 | Javier|Clara | |
 | 09 | Clara|Javier | |
