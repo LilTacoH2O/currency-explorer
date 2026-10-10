@@ -7,7 +7,7 @@
 ## Pair Programming
 | Misión | Driver | Navigator | Commit / evidencia |
 |---|---|---|---|
-| 04 |Javier |Clara | |
+| 04 |Javier |Clara | Misión 04: monedas dinámicas con selectores — Driver: Javier / Navigator: Clara |
 | 05 |Clara |Javier | |
 | 06 | Javier|Clara | |
 | 07 |Clara |Javier | |
