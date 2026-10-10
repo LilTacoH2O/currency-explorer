@@ -8,8 +8,8 @@
 | Misión | Driver | Navigator | Commit / evidencia |
 |---|---|---|---|
 | 04 |Javier |Clara | Misión 04: monedas dinámicas con selectores — Driver: Javier / Navigator: Clara |
-| 05 |Clara |Javier | |
-| 06 | Javier|Clara | Misión 05: conversión completa con formato de importes — Driver: Clara / Navigator: Javier |
+| 05 |Clara |Javier | Misión 05: conversión completa con formato de importes — Driver: Clara / Navigator: Javier |
+| 06 | Javier|Clara | |
 | 07 |Clara |Javier | |
 | 08 | Javier|Clara | |
 | 09 | Clara|Javier | |
